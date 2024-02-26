@@ -1,0 +1,118 @@
+#main {
+  background: #f1f3ff;
+}
+
+#navbar .nav-link:hover {
+  color: skyblue;
+}
+
+.navbar.scrolled {
+  background-color: #f1f3ff;
+}
+
+#carouselExample {
+  background-color: #f1f3ff;
+}
+
+#testimony {
+  display: flex;
+  justify-content: center;
+}
+
+#testimony > h2 {
+  display: flex;
+  justify-content: center;
+}
+
+#testimony > p {
+  display: flex;
+  justify-content: center;
+}
+
+#testimony > #carouselExample {
+  width: 832px;
+  height: 270px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-inner {
+  display: flex;
+  align-items: center;
+}
+
+.carousel-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: justify;
+}
+
+#started {
+  display: flex;
+  justify-content: center;
+}
+
+.jumbotron {
+  width: 1000px;
+  height: 300px;
+  background: #0d28a6;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  #mobil {
+    padding: 25px;
+  }
+
+  #our {
+    padding: 25px;
+  }
+
+  .service {
+    font-size: 90%;
+  }
+
+  #testimony > p {
+    text-align: center;
+  }
+
+  #testimony > #carouselExample {
+    height: auto;
+  }
+
+  .carousel-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .carousel-control-prev {
+    height: 100px;
+  }
+
+  .carousel-control-next {
+    height: 100px;
+  }
+
+  .jumbotron > h1 {
+    text-align: center;
+  }
+
+  .jumbotron > p {
+    text-align: center;
+  }
+
+  #title-faq {
+    text-align: center;
+  }
+
+  #footer {
+    display: flex;
+    flex-direction: column;
+  }
+}
