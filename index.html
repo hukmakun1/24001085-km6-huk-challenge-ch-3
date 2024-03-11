@@ -12,11 +12,15 @@
       crossorigin="anonymous"
     />
 
-    <link rel="stylesheet" href="/rental_mobil.css" />
+    <link rel="stylesheet" href="/app.css" />
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript">
+      $(".datepicker").datepicker();
+    </script>
   </head>
   <body>
     <!-- navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg bg-body-tertiary" id="navbar">
+    <nav class="navbar fixed-top navbar-expand-lg" id="navbar">
       <div class="container-fluid">
         <a class="navbar-brand" href="#"
           ><img src="Assets/Binar.svg" alt="" />
@@ -50,7 +54,7 @@
     </nav>
 
     <!-- Main Section -->
-    <div class="row align-items-center p-4" id="main">
+    <div class="row align-items-center p-5" id="main">
       <div class="col-md-6">
         <h1>Sewa dan Rental Mobil Terbaik di Kawasanmu</h1>
         <p>
@@ -58,376 +62,432 @@
           terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
           untuk sewa mobil selama 24 jam.
         </p>
-        <button type="button" class="btn btn-success">Mulai Sewa Mobil</button>
+        <button type="button" class="btn btn-success" id="button-sewa">
+          Mulai Sewa Mobil
+        </button>
       </div>
       <div class="col-md-6" id="mobil">
         <img src="Assets/img_car.png" alt="aaaa" class="img-fluid" />
       </div>
     </div>
-
-    <!-- Our Service -->
-    <div class="row align-items-center p-4" id="service">
-      <div class="col-md-6" id="our">
-        <img src="Assets/img_service.png" alt="aaaa" class="img-fluid" />
-      </div>
-      <div class="col-md-6">
-        <h2>Best Car Rental for any kind of trip in (Lokasimu)!</h2>
-        <p>
-          Sewa mobil di (Lokasimu) bersama Binar Car Rental jaminan harga lebih
-          murah dibandingkan yang lain, kondisi mobil baru, serta kualitas
-          pelayanan terbaik untuk perjalanan wisata, bisnis, wedding, meeting,
-          dll.
-        </p>
-        <div class="service">
-          <p>
-            <span
-              ><img
-                src="Assets/Group 53.png"
-                alt=""
-                class="img-fluid px-2" /></span
-            >Sewa Mobil Dengan Supir di Bali 12 Jam
-          </p>
-          <p>
-            <span
-              ><img
-                src="Assets/Group 53.png"
-                alt=""
-                class="img-fluid px-2" /></span
-            >Sewa Mobil Lepas Kunci di Bali 24 Jam
-          </p>
-          <p>
-            <span
-              ><img
-                src="Assets/Group 53.png"
-                alt=""
-                class="img-fluid px-2" /></span
-            >Sewa Mobil Jangka Panjang Bulanan
-          </p>
-          <p>
-            <span
-              ><img
-                src="Assets/Group 53.png"
-                alt=""
-                class="img-fluid px-2" /></span
-            >Gratis Antar - Jemput Mobil di Bandara
-          </p>
-          <p>
-            <span
-              ><img
-                src="Assets/Group 53.png"
-                alt=""
-                class="img-fluid px-2" /></span
-            >Layanan Airport Transfer / Drop In Out
-          </p>
+    <!-- Search Bar -->
+    <div id="search-bar" class="p-5">
+      <form class="d-flex" role="search" id="search-submit">
+        <div class="p-4">
+          <label for="type">Tipe Diver</label>
+          <select class="form-select" id="type-input">
+            <option value="" selected disabled>Pilih Tipe Driver</option>
+            <option value="true">Dengan Sopir</option>
+            <option value="false">Tanpa Sopir</option>
+          </select>
         </div>
-      </div>
+        <div class="p-4">
+          <label for="tanggal">Tanggal</label>
+          <div class="tanggal">
+            <input type="date" name="tanggal" id="date-input" />
+          </div>
+        </div>
+        <div class="p-4">
+          <label for="time-input">Waktu Jemput/Ambil</label>
+          <select class="form-select" id="time-input">
+            <option value="" selected disabled>Pilih Waktu</option>
+            <option value="1">08.00 WIB</option>
+            <option value="2">09.00 WIB</option>
+            <option value="3">10.00 WIB</option>
+            <option value="4">11.00 WIB</option>
+            <option value="5">12.00 WIB</option>
+          </select>
+        </div>
+        <div class="p-4">
+          <label for="search-input">Jumlah Penumpang (Opsional)</label>
+          <input
+            class="form-control me-2"
+            type="search"
+            placeholder="Jumlah Penumpang"
+            aria-label="Search"
+            id="search-input"
+          />
+        </div>
+        <div class="p-4">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </div>
+      </form>
     </div>
+    <div class="row g-4" id="mobil-card"></div>
 
-    <!-- why us? -->
-    <div class="row align-items-center p-4" id="why">
-      <h2>Why Us?</h2>
-      <p>Mengapa harus pilih Binar Car Rental?</p>
-      <div class="col-md-3 p-2" id="why1">
-        <div class="card">
-          <div class="card-body">
-            <img src="Assets/icon_complete.png" alt="" class="img-fluid" />
-            <h5 class="card-title">Mobil Lengkap</h5>
-            <p class="card-text">
-              Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
-              terawat
+    <div id="landing-page-information">
+      <!-- Our Service -->
+      <div class="row align-items-center p-5" id="service">
+        <div class="col-md-6" id="our">
+          <img src="Assets/img_service.png" alt="aaaa" class="img-fluid" />
+        </div>
+        <div class="col-md-6">
+          <h2>Best Car Rental for any kind of trip in (Lokasimu)!</h2>
+          <p>
+            Sewa mobil di (Lokasimu) bersama Binar Car Rental jaminan harga
+            lebih murah dibandingkan yang lain, kondisi mobil baru, serta
+            kualitas pelayanan terbaik untuk perjalanan wisata, bisnis, wedding,
+            meeting, dll.
+          </p>
+          <div class="service">
+            <p>
+              <span
+                ><img
+                  src="Assets/Group 53.png"
+                  alt=""
+                  class="img-fluid px-2" /></span
+              >Sewa Mobil Dengan Supir di Bali 12 Jam
+            </p>
+            <p>
+              <span
+                ><img
+                  src="Assets/Group 53.png"
+                  alt=""
+                  class="img-fluid px-2" /></span
+              >Sewa Mobil Lepas Kunci di Bali 24 Jam
+            </p>
+            <p>
+              <span
+                ><img
+                  src="Assets/Group 53.png"
+                  alt=""
+                  class="img-fluid px-2" /></span
+              >Sewa Mobil Jangka Panjang Bulanan
+            </p>
+            <p>
+              <span
+                ><img
+                  src="Assets/Group 53.png"
+                  alt=""
+                  class="img-fluid px-2" /></span
+              >Gratis Antar - Jemput Mobil di Bandara
+            </p>
+            <p>
+              <span
+                ><img
+                  src="Assets/Group 53.png"
+                  alt=""
+                  class="img-fluid px-2" /></span
+              >Layanan Airport Transfer / Drop In Out
             </p>
           </div>
         </div>
       </div>
-      <div class="col-md-3 p-2" id="why2">
-        <div class="card">
-          <div class="card-body">
-            <img src="Assets/icon_price.png" alt="" class="img-fluid" />
-            <h5 class="card-title">Harga Murah</h5>
-            <p class="card-text">
-              Harga murah dan bersaing, bisa bandingkan harga kami dengan rental
-              mobil lain.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 p-2" id="why3">
-        <div class="card">
-          <div class="card-body">
-            <img src="Assets/icon_24hrs.png" alt="" class="img-fluid" />
-            <h5 class="card-title">Layanan 24 Jam</h5>
-            <p class="card-text">
-              Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
-              tersedia di akhir minggu.
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3 p-2" id="why4">
-        <div class="card">
-          <div class="card-body">
-            <img src="Assets/icon_professional.png" alt="" class="img-fluid" />
-            <h5 class="card-title">Sopir Professional</h5>
-            <p class="card-text">
-              Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
-              tepat waktu.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Testimonial -->
-    <div class="row align-items-center p-4" id="testimony">
-      <h2>Testimonial</h2>
-      <p>Berbagai review positif dari para pelanggan kami</p>
-      <div id="carouselExample" class="carousel carousel-dark slide">
-        <!-- class="carousel carousel-dark slide" membuat tombol menjadi hitam -->
-        <div class="carousel-inner">
-          <div class="carousel-item active">
-            <div class="carousel-content">
-              <div>
-                <img
-                  src="/Assets/img_photo.png"
-                  class="px-5 my-2"
-                  style="width: 167px; height: 80px"
-                  alt="Jhon Dee"
-                />
-              </div>
-              <div class="col-md-6">
-                <img src="/Assets/Bintang 5.png" class="py-2" alt="" />
-                <p>
-                  "Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                  Quas porro molestias molestiae, cupiditate sint vel suscipit
-                  commodi exercitationem! Quae deserunt et obcaecati repellendus
-                  suscipit, itaque quisquam laboriosam quidem magnam quod."
-                </p>
-                <h6>John Dee 32, Bromo</h6>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-content">
-              <div>
-                <img
-                  src="/Assets/French_School_(18)_-_Portrait_of_a_man,_oval.png"
-                  class="px-5 my-2"
-                  style="width: 167px; height: 80px"
-                  alt="Alfonsus"
-                />
-              </div>
-              <div class="col-md-6">
-                <img src="/Assets/Bintang 5.png" class="py-2" alt="" />
-                <p>
-                  "Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Deserunt cum sequi atque est dolor ullam quaerat maxime.
-                  Nulla, dolores expedita tempora quisquam aliquam illum vitae
-                  ipsa ipsum provident doloribus enim."
-                </p>
-                <h6>Alfonsus 80, Paris</h6>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="carousel-content">
-              <div>
-                <img
-                  src="/Assets/conan.png"
-                  class="px-5 my-2"
-                  style="width: 167px; height: 80px"
-                  alt="Edogawa Conan"
-                />
-              </div>
-              <div class="col-md-6">
-                <img src="/Assets/Bintang 5.png" class="py-2" alt="" />
-                <p>
-                  "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos
-                  beatae, velit, earum ipsa possimus hic a quo molestiae ex iste
-                  eveniet quibusdam odit voluptatem officiis pariatur eligendi
-                  modi fuga at."
-                </p>
-                <h6>Edogawa Conan 17, Beika</h6>
-              </div>
+      <!-- why us? -->
+      <div class="row align-items-center p-5" id="why">
+        <h2>Why Us?</h2>
+        <p>Mengapa harus pilih Binar Car Rental?</p>
+        <div class="col-md-3 p-2" id="why1">
+          <div class="card">
+            <div class="card-body">
+              <img src="Assets/icon_complete.png" alt="" class="img-fluid" />
+              <h5 class="card-title">Mobil Lengkap</h5>
+              <p class="card-text">
+                Tersedia banyak pilihan mobil, kondisi masih baru, bersih dan
+                terawat
+              </p>
             </div>
           </div>
         </div>
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#carouselExample"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
+        <div class="col-md-3 p-2" id="why2">
+          <div class="card">
+            <div class="card-body">
+              <img src="Assets/icon_price.png" alt="" class="img-fluid" />
+              <h5 class="card-title">Harga Murah</h5>
+              <p class="card-text">
+                Harga murah dan bersaing, bisa bandingkan harga kami dengan
+                rental mobil lain.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 p-2" id="why3">
+          <div class="card">
+            <div class="card-body">
+              <img src="Assets/icon_24hrs.png" alt="" class="img-fluid" />
+              <h5 class="card-title">Layanan 24 Jam</h5>
+              <p class="card-text">
+                Siap melayani kebutuhan Anda selama 24 jam nonstop. Kami juga
+                tersedia di akhir minggu.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3 p-2" id="why4">
+          <div class="card">
+            <div class="card-body">
+              <img
+                src="Assets/icon_professional.png"
+                alt=""
+                class="img-fluid"
+              />
+              <h5 class="card-title">Sopir Professional</h5>
+              <p class="card-text">
+                Sopir yang profesional, berpengalaman, jujur, ramah dan selalu
+                tepat waktu.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- Getting Started -->
-    <div class="row align-items-center p-4" id="started">
-      <div class="jumbotron">
-        <h1 class="display-4">Sewa Mobil di (Lokasimu) Sekarang</h1>
-        <p class="lead" style="margin-bottom: 30px">
-          Tekan tombol di bawah ini untuk menyewa mobil
-        </p>
-        <button type="button" class="btn btn-success">Mulai Sewa Mobil</button>
+      <!-- Testimonial -->
+      <div class="row align-items-center p-4" id="testimony">
+        <h2>Testimonial</h2>
+        <p>Berbagai review positif dari para pelanggan kami</p>
+        <div id="carouselExample" class="carousel carousel-dark slide">
+          <!-- class="carousel carousel-dark slide" membuat tombol menjadi hitam -->
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-content">
+                <div>
+                  <img
+                    src="/Assets/img_photo.png"
+                    class="px-5 my-2"
+                    style="width: 167px; height: 80px"
+                    alt="Jhon Dee"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img src="/Assets/Bintang 5.png" class="py-2" alt="" />
+                  <p>
+                    "Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    Quas porro molestias molestiae, cupiditate sint vel suscipit
+                    commodi exercitationem! Quae deserunt et obcaecati
+                    repellendus suscipit, itaque quisquam laboriosam quidem
+                    magnam quod."
+                  </p>
+                  <h6>John Dee 32, Bromo</h6>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-content">
+                <div>
+                  <img
+                    src="/Assets/French_School_(18)_-_Portrait_of_a_man,_oval.png"
+                    class="px-5 my-2"
+                    style="width: 167px; height: 80px"
+                    alt="Alfonsus"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img src="/Assets/Bintang 5.png" class="py-2" alt="" />
+                  <p>
+                    "Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Deserunt cum sequi atque est dolor ullam quaerat maxime.
+                    Nulla, dolores expedita tempora quisquam aliquam illum vitae
+                    ipsa ipsum provident doloribus enim."
+                  </p>
+                  <h6>Alfonsus 80, Paris</h6>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-content">
+                <div>
+                  <img
+                    src="/Assets/conan.png"
+                    class="px-5 my-2"
+                    style="width: 167px; height: 80px"
+                    alt="Edogawa Conan"
+                  />
+                </div>
+                <div class="col-md-6">
+                  <img src="/Assets/Bintang 5.png" class="py-2" alt="" />
+                  <p>
+                    "Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Eos beatae, velit, earum ipsa possimus hic a quo molestiae
+                    ex iste eveniet quibusdam odit voluptatem officiis pariatur
+                    eligendi modi fuga at."
+                  </p>
+                  <h6>Edogawa Conan 17, Beika</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExample"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
       </div>
-    </div>
 
-    <!-- FAQ -->
-    <div class="row p-4" id="faq">
-      <div class="col-md-6" id="title-faq">
-        <h1>Frequently Asked Question</h1>
-        <p>Berikut pertanyaan yang sering diajukan.</p>
+      <!-- Getting Started -->
+      <div class="row align-items-center p-5" id="started">
+        <div class="jumbotron">
+          <h1 class="display-4">Sewa Mobil di (Lokasimu) Sekarang</h1>
+          <p class="lead" style="margin-bottom: 30px">
+            Tekan tombol di bawah ini untuk menyewa mobil
+          </p>
+          <button type="button" class="btn btn-success">
+            Mulai Sewa Mobil
+          </button>
+        </div>
       </div>
-      <div class="col-md-6">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="row p-1">
-            <div class="accordion-item" id="q1">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseOne"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseOne"
+
+      <!-- FAQ -->
+      <div class="row p-5" id="faq">
+        <div class="col-md-6" id="title-faq">
+          <h1>Frequently Asked Question</h1>
+          <p>Berikut pertanyaan yang sering diajukan.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="row p-1">
+              <div class="accordion-item" id="q1">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseOne"
+                  >
+                    Apa saja syarat yang dibutuhkan?
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseOne"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  Apa saja syarat yang dibutuhkan?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseOne"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Expedita laborum voluptatem non earum adipisci corrupti,
-                  inventore cumque excepturi facilis repudiandae? Non cumque
-                  doloremque repellendus magnam. Error, quaerat dignissimos.
-                  Esse, officia.
+                  <div class="accordion-body">
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Expedita laborum voluptatem non earum adipisci corrupti,
+                    inventore cumque excepturi facilis repudiandae? Non cumque
+                    doloremque repellendus magnam. Error, quaerat dignissimos.
+                    Esse, officia.
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row p-1">
-            <div class="accordion-item" id="q2">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseTwo"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseTwo"
+            <div class="row p-1">
+              <div class="accordion-item" id="q2">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseTwo"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseTwo"
+                  >
+                    Berapa hari minimal sewa mobil lepas kunci?
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseTwo"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  Berapa hari minimal sewa mobil lepas kunci?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseTwo"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Tempora perferendis iste qui aspernatur nihil, incidunt
-                  debitis, non itaque accusantium quidem fugit. At ullam
-                  praesentium asperiores modi reiciendis! Nisi, sequi porro.
+                  <div class="accordion-body">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Tempora perferendis iste qui aspernatur nihil, incidunt
+                    debitis, non itaque accusantium quidem fugit. At ullam
+                    praesentium asperiores modi reiciendis! Nisi, sequi porro.
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row p-1">
-            <div class="accordion-item" id="q3">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseThree"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseThree"
+            <div class="row p-1">
+              <div class="accordion-item" id="q3">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseThree"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseThree"
+                  >
+                    Berapa hari sebelumnya sabaiknya booking sewa mobil?
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseThree"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  Berapa hari sebelumnya sabaiknya booking sewa mobil?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseThree"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Debitis deserunt dolores excepturi omnis, voluptate sint
-                  molestiae facere, quam eos architecto nulla culpa fugiat
-                  tenetur voluptatum, iure cupiditate quidem adipisci vero.
+                  <div class="accordion-body">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Debitis deserunt dolores excepturi omnis, voluptate sint
+                    molestiae facere, quam eos architecto nulla culpa fugiat
+                    tenetur voluptatum, iure cupiditate quidem adipisci vero.
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row p-1">
-            <div class="accordion-item" id="q4">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFour"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseFour"
+            <div class="row p-1">
+              <div class="accordion-item" id="q4">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFour"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFour"
+                  >
+                    Apakah Ada biaya antar-jemput?
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFour"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  Apakah Ada biaya antar-jemput?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseFour"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Omnis, voluptates velit odio in ratione labore enim modi.
-                  Aliquam, corporis? At ullam expedita nesciunt molestias,
-                  numquam nam deserunt rerum quisquam vero?
+                  <div class="accordion-body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Omnis, voluptates velit odio in ratione labore enim modi.
+                    Aliquam, corporis? At ullam expedita nesciunt molestias,
+                    numquam nam deserunt rerum quisquam vero?
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row p-1">
-            <div class="accordion-item" id="q5">
-              <h2 class="accordion-header">
-                <button
-                  class="accordion-button collapsed"
-                  type="button"
-                  data-bs-toggle="collapse"
-                  data-bs-target="#flush-collapseFive"
-                  aria-expanded="false"
-                  aria-controls="flush-collapseFive"
+            <div class="row p-1">
+              <div class="accordion-item" id="q5">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseFive"
+                    aria-expanded="false"
+                    aria-controls="flush-collapseFive"
+                  >
+                    Bagaimana jika terjadi kecelakaan?
+                  </button>
+                </h2>
+                <div
+                  id="flush-collapseFive"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#accordionFlushExample"
                 >
-                  Bagaimana jika terjadi kecelakaan?
-                </button>
-              </h2>
-              <div
-                id="flush-collapseFive"
-                class="accordion-collapse collapse"
-                data-bs-parent="#accordionFlushExample"
-              >
-                <div class="accordion-body">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Accusamus repellendus necessitatibus obcaecati voluptas dolor,
-                  magnam modi officia animi ut. Adipisci consequuntur, similique
-                  mollitia fugit expedita illum? Excepturi, dolores. Ea, vitae!
+                  <div class="accordion-body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Accusamus repellendus necessitatibus obcaecati voluptas
+                    dolor, magnam modi officia animi ut. Adipisci consequuntur,
+                    similique mollitia fugit expedita illum? Excepturi, dolores.
+                    Ea, vitae!
+                  </div>
                 </div>
               </div>
             </div>
@@ -437,7 +497,7 @@
     </div>
 
     <!-- Footer -->
-    <div class="row align-items-center p-4" id="footer">
+    <div class="row align-items-center p-5" id="footer">
       <div class="col md-3 p-2">
         <div class="row md-4 p-1">
           <p>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
@@ -498,5 +558,7 @@
         });
       });
     </script>
+
+    <script type="module" src="Scripts/index.js"></script>
   </body>
 </html>
