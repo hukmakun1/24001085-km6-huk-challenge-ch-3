@@ -2,22 +2,16 @@ const { v4: uuidv4 } = require("uuid");
 const cars = require("../../data/mobil.json");
 
 exports.getCars = (manufacture, availableAt, capacity) => {
-  let data = cars.map((cars) => cars);
+  let data = cars.map((car /* data satuan (satu object) dari cars */) => car);
 
-  data = data.filter((cars) => {
+  data = data.filter((car) => {
     let filtersedStatus = true;
-    if (manufacture) {
-      filtersedStatus =
-        filtersedStatus &&
-        cars.manufacture.toLowerCase().includes(manufacture?.toLowerCase());
-    }
     if (availableAt) {
       filtersedStatus =
-        filtersedStatus &&
-        cars.availableAt.toLowerCase().includes(availableAt?.toLowerCase());
+        filtersedStatus && new Date(car.availableAt) > new Date(availableAt);
     }
     if (capacity) {
-      filtersedStatus = filtersedStatus && cars.capacity;
+      filtersedStatus = filtersedStatus && car.capacity > capacity;
     }
 
     return filtersedStatus;

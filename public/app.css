@@ -27,6 +27,11 @@
   border-radius: 12.5px;
 }
 
+.card-img-top {
+  object-fit: cover;
+  height: 200px;
+}
+
 #carouselExample {
   background-color: #f1f3ff;
 }
