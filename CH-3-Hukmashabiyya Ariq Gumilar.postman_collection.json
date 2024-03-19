@@ -1,0 +1,148 @@
+{
+	"info": {
+		"_postman_id": "06d52563-e9a4-489a-a5b0-79213401e1d9",
+		"name": "CH-3-Hukmashabiyya Ariq Gumilar",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33567782"
+	},
+	"item": [
+		{
+			"name": "CH-3-Hukmashabiyya Ariq Gumilar",
+			"item": [
+				{
+					"name": "Get Cars",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7873/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7873",
+							"path": [
+								"cars"
+							],
+							"query": [
+								{
+									"key": "manufacture",
+									"value": "ford",
+									"disabled": true
+								},
+								{
+									"key": "availableAt",
+									"value": "aaa",
+									"disabled": true
+								},
+								{
+									"key": "capacity",
+									"value": "4",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Cars id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7873/cars/6e2bc663-5197-441a-957b-bc75e4a2da7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7873",
+							"path": [
+								"cars",
+								"6e2bc663-5197-441a-957b-bc75e4a2da7c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Cars",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"1\",\r\n    \"plate\": \"B-0001\",\r\n    \"manufacture\": \"Bebas\",\r\n    \"model\": \"F150\",\r\n    \"image\": \"./images/car01.min.jpg\",\r\n    \"rentPerDay\": 200000,\r\n    \"capacity\": 2,\r\n    \"description\": \" Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.\",\r\n    \"availableAt\": \"2024-03-13T15:49:05.563Z\",\r\n    \"transmission\": \"Automatic\",\r\n    \"available\": true,\r\n    \"type\": \"gatau\",\r\n    \"year\": 2022,\r\n    \"options\": [\r\n        \"Cruise Control\",\r\n        \"Tinted Glass\",\r\n        \"Tinted Glass\",\r\n        \"Tinted Glass\",\r\n        \"AM/FM Stereo\"\r\n    ],\r\n    \"specs\": [\r\n        \"Brake assist\",\r\n        \"Leather-wrapped shift knob\",\r\n        \"Glove box lamp\",\r\n        \"Air conditioning w/in-cabin microfilter\",\r\n        \"Body color folding remote-controlled pwr mirrors\",\r\n        \"Dual-stage front airbags w/occupant classification system\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7873/cars",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7873",
+							"path": [
+								"cars"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Cars",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"plate\": \"DBH-3491\",\r\n    \"manufacture\": \"Bebas\",\r\n    \"model\": \"F150\",\r\n    \"image\": \"./images/car01.min.jpg\",\r\n    \"rentPerDay\": 200000,\r\n    \"capacity\": 2,\r\n    \"description\": \" Brake assist. Leather-wrapped shift knob. Glove box lamp. Air conditioning w/in-cabin microfilter.\",\r\n    \"availableAt\": \"2024-03-13T15:49:05.563Z\",\r\n    \"transmission\": \"Automatic\",\r\n    \"available\": true,\r\n    \"type\": \"Sabeb\",\r\n    \"year\": 2022,\r\n    \"options\": [\r\n        \"Cruise Control\",\r\n        \"Tinted Glass\",\r\n        \"Tinted Glass\",\r\n        \"Tinted Glass\",\r\n        \"AM/FM Stereo\"\r\n    ],\r\n    \"specs\": [\r\n        \"Brake assist\",\r\n        \"Leather-wrapped shift knob\",\r\n        \"Glove box lamp\",\r\n        \"Air conditioning w/in-cabin microfilter\",\r\n        \"Body color folding remote-controlled pwr mirrors\",\r\n        \"Dual-stage front airbags w/occupant classification system\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:7873/cars/6e2bc663-5197-441a-957b-bc75e4a2da7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7873",
+							"path": [
+								"cars",
+								"6e2bc663-5197-441a-957b-bc75e4a2da7c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Cars",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:7873/cars/6e2bc663-5197-441a-957b-bc75e4a2da7c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "7873",
+							"path": [
+								"cars",
+								"6e2bc663-5197-441a-957b-bc75e4a2da7c"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
